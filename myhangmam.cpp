@@ -11,10 +11,12 @@ string referenceWord;        //Là từ cần đoán. được hiển thị theo
 char body[7];                //Mảng chứa các ký tự bộ phận của cơ thể.
 int score = 0;               //Điểm của người chơi. Đạt max = kích thước từ cần đoán, min =0.
 int slot = 0;                //Số lượt chơi hiện tại.
+const string namefile = "dictionary_1.txt";
 vector<string> Dictionary(); //Đọc list từ vào vector
 void ReIntination();         //Chuẩn bị từ hiển thị theo '----'
 void Running();              //Hàm chính, chạy chương trình.
 void Draw(int slot);         //Vẽ hình.
+
 int main()
 {
     vector<string> lists;
@@ -36,7 +38,7 @@ void Draw(int count)
     //cout << guessWord;
 
     cout << "Welcome to Hangman Game" << endl;
-    printf("You have %d turns \n", MAX_SLOT-slot);
+    printf("You will lose if you are wrong in next %d turns.\n", MAX_SLOT-slot);
     if (count == 1)
     {
         body[0] = 'o';
@@ -119,7 +121,7 @@ vector<string> Dictionary()
 {
     vector<string> list;
     ifstream readFile;
-    readFile.open("dictionary_1.txt");
+    readFile.open(namefile);
     if (readFile.fail())
     {
         cout << "Not found dictionary";
