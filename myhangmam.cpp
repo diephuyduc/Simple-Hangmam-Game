@@ -135,6 +135,7 @@ vector<string> Dictionary()
             list.push_back(words);
         }
     }
+        readFile.close();
     return list;
 }
 
